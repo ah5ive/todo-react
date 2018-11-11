@@ -4,16 +4,18 @@ class App extends React.Component {
     this.getToDo = this.getToDo.bind( this );
     this.submit = this.submit.bind( this );
     this.removeToDo = this.removeToDo.bind( this );
+    this.doneReset = this.doneReset.bind( this );
 
     this.state = {
     todo : "",
     list : [],
+    done : [],
     warning:"",
     }
   }
 
   getToDo(event){
-    console.log("getToDo", event.target.value);
+    //console.log("getToDo", event.target.value);
     if(this.state.todo.length < 15){
         this.setState({todo:event.target.value});
     }
@@ -34,14 +36,22 @@ class App extends React.Component {
     console.log("list",this.state.list)
   }
 
-  removeToDo(index){
+  removeToDo(todo, index){
     console.log("index",index)
-    //console.log("todo",todo)
+    console.log("event",todo)
+
+    this.state.done.push(todo);
+
+    this.setState({done:this.state.done});
+
+    console.log("done",this.state.done);
+
     var list = this.state.list;
     for(var i = 0; i< list.length; i++){
-        console.log("list",i)
-        if( index === i ){
+        console.log("i",i)
+        if( index == i){
             list.splice(i, 1);
+            console.log()
             this.setState({list:list})
         }
     }
@@ -61,18 +71,30 @@ class App extends React.Component {
     // }
   }
 
+  doneReset(event){
+    this.setState({done: []});
+  }
+
   render() {
       // render the list with a map() here
     console.log("rendering");
       return (
-        <div className="list">
-            <h2>To do list</h2>
-            <form className={this.state.warning} onSubmit={this.submit}>
-            <input value={this.state.todo} onChange={this.getToDo}/><br/>
-            <button>Submit</button>
-            </form>
-            <List mylist={this.state.list} deletetodo={this.removeToDo}/>
-
+        <div className="wrapper">
+            <div id="container">
+            <div className="main">
+                <h2>To do list</h2>
+                    <form className={this.state.warning} onSubmit={this.submit}>
+                    <input value={this.state.todo} onChange={this.getToDo}/><br/>
+                    <button>Submit</button>
+                    </form>
+            </div>
+            <div className="mylist">
+                <List mylist={this.state.list} deletetodo={this.removeToDo}/>
+            </div>
+            <div>
+                <Done donelist={this.state.done} clearlist={this.doneReset}/>
+            </div>
+            </div>
         </div>
       );
   }
@@ -83,15 +105,15 @@ class List extends React.Component {
     render(){
 
             const list = this.props.mylist.map((todo,index)=>{
-                //console.log("todolist",{todo})
-                return <li key={index}>{todo}<button className="btndelete" onClick={this.props.deletetodo.bind(todo,index)}>Delete</button></li>
+                console.log("todolist",{todo})
+                return <li key={index}>{todo}<button className="btndelete" onClick={()=>this.props.deletetodo(todo,index)}>Delete</button></li>
             });
 
         return(
 
-            <div className="wrapper">
+            <div>
                 <h2>Things to do</h2>
-                <ul className="wrapper">
+                <ul className="">
                     {list}
                 </ul>
             </div>
@@ -101,9 +123,31 @@ class List extends React.Component {
 
  }
 
+class Done extends React.Component{
+    render(){
+        const done = this.props.donelist.map((done, index)=>{
+            console.log("render done",{done})
+            return <li key={index}>{done}</li>
+        });
+
+        return(
+            <div className="mylist">
+            <h2>Completed </h2>
+            <button onClick={this.props.clearlist}>clear</button>
+                <ul className="">
+                    {done}
+                </ul>
+
+            </div>
+            )
+    }
+}
+
 ReactDOM.render(
-    <div className="wrapper">
+    <div>
+
         <App/>
+
     </div>,
     document.getElementById('root')
 );

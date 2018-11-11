@@ -7,11 +7,32 @@
 <style>
     body{
         background-color: #f4a442;
+        /*text-align: center;*/
     }
+
+
     .wrapper{
-        font-family: sans-serif;
-        margin: 0 auto;
+        background-color: pink;
         text-align: center;
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }
+
+    #container{
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main {
+        text-align: left;
+        display: inline-block;
+        float: left;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        font-variant: normal;
+        color: #18576b;
     }
 
     input {
@@ -21,22 +42,32 @@
     }
 
     button{
-        background-color: grey;
+        background-color: #34a0ed;
         height: 30px;
         width: 70px;
         margin-top:10px;
         border-radius: 5px;
+        border-style: none;
         font-size: 1em;
     }
+
     .warning input {
         border: 5px solid red;
     }
+
+    .mylist {
+        float: left;
+        text-align: left;
+        display: inline-block;
+        margin-left: 20px;
+    }
+
     ul {
     list-style: none;
-    border-radius: 6px;
+
     padding-left: 0;
     display: block;
-    background-color: #dff441;
+    /*background-color: #e5d899*/
     height: 100%;
     width: 200px;
     }
@@ -44,14 +75,19 @@
     li{
         padding: 5px 0px 5px 8px;
         text-align: left;
-        border-bottom: 1px dotted grey;
+        display: block;
+        border-radius: 6px;
+        /*border-bottom: 1px dotted grey;*/
+        background-color: #e5d899;
+        margin: 5px 0 0 0;
     }
 
     .btndelete{
         float: right;
-        font-size: .6em;
+        font-size: .8em;
         height: 20px;
         width: :50;
+        background-color: #648caf;
         margin-top: 0px;
         margin-right:5px;
     }
