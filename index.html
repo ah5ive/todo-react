@@ -5,6 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>todo</title>
 <style>
+    body{
+        background-color: #f4a442;
+    }
+    .wrapper{
+        font-family: sans-serif;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    input {
+        height: 100%;
+        padding: 5px;
+        border-radius: 6px;
+    }
+
+    button{
+        background-color: grey;
+        height: 30px;
+        width: 70px;
+        margin-top:10px;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .warning input {
+        border: 5px solid red;
+    }
+    ul {
+    list-style: none;
+    border-radius: 6px;
+    padding-left: 0;
+    display: block;
+    background-color: #dff441;
+    height: 100%;
+    width: 200px;
+    }
+
+    li{
+        padding: 5px 0px 5px 8px;
+        text-align: left;
+        border-bottom: 1px dotted grey;
+    }
+
+    .btndelete{
+        float: right;
+        font-size: .6em;
+        height: 20px;
+        width: :50;
+        margin-top: 0px;
+        margin-right:5px;
+    }
 </style>
 </head>
 <body>
@@ -12,6 +62,6 @@
 <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-<script src="script.js" type="text/babel"></script>
+<script src="script.jsx" type="text/babel"></script>
 </body>
 </html>
